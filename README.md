@@ -27,7 +27,7 @@
     ```bash
     git submodule add https://github.com/limine-bootloader/limine os/limine
     ``` 
-- ### limine
+- ### printf
     - ejecutar el comando: 
     ```bash
     git submodule add https://github.com/mpaland/printf os/src/print/printf
