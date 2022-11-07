@@ -3,26 +3,32 @@
 #include "util/string.h"
 #include "memory/memory.h"
 #include <stdint.h>
+#include "io/interrupts.h"
 
-void hlt() {
+void hlt()
+{
     __asm__("hlt");
 }
 
-void _start() {
+void _start()
+{
     printf("Loading kernel, bootloader=%s, version=%s\n",
-        get_bootloader_name(),
-        get_bootloader_version()
-    );
-    
-    init_memory();
+           get_bootloader_name(),
+           get_bootloader_version());
 
-    void * page1 = request_page();
+    init_memory();
+    init_interrupts();
+
+    uint64_t *badptr = (uint64_t *)0xffffffffdeadb000;
+    *badptr = 0xdeadbeef;
+
+    /*void *page1 = request_page();
     printf("Page 1: %p\n", page1);
-    void * page2 = request_page();
+    void *page2 = request_page();
     printf("Page 2: %p\n", page2);
     free_page(page2);
-    void * page3 = request_page();
-    printf("Page 3: %p\n", page3);
+    void *page3 = request_page();
+    printf("Page 3: %p\n", page3);*/
 
     printf("Kernel looping\n");
     hlt();
