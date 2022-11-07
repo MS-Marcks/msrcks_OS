@@ -1,3 +1,6 @@
 [submodule "os/OVMFbin"]
 	path = os/OVMFbin
 	url = https://github.com/Absurdponcho/OVMFbin
+[submodule "os/limine"]
+	path = os/limine
+	url = https://github.com/limine-bootloader/limine
