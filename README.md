@@ -9,9 +9,12 @@
 ## **Progreso**
 
 - [x] Entorno de desarrollo
+- [x] Arranque básico
+- [x] Interfaz con limine
+- [x] Funciones básicas de impresión
 - [x] Memoria física
-- [x] Gestor de paginción en la memoria física
-- [x] Interrupciones
+- [x] Asignador de marcos de página
+- [x] Interrupciones (IDT)
 
 ## **sub modulos**
 - ### OVMFbin
