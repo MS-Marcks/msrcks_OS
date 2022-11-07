@@ -1,0 +1,30 @@
+{
+  "name": "system_opertive",
+  "version": "1.0.0",
+  "description": "",
+  "visor": {
+    "dir": "./os",
+    "script": "./os/build.sh"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  },
+  "devDependencies": {
+    "colors-cli": "^1.0.28"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MS-Marcks/msrcks_OS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MS-Marcks/msrcks_OS/issues"
+  },
+  "homepage": "https://github.com/MS-Marcks/msrcks_OS#readme"
+}
