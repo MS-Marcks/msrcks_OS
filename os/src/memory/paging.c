@@ -16,13 +16,13 @@ void init_paging()
             :
             : "r"(pml4)); // invalidamos TLB
 
-    uint64_t virual_start = get_kernel_address_virtual();
+    uint64_t virtual_start = get_kernel_address_virtual();
     uint64_t linker_start = (uint64_t)&KERNEL_START;
 
-    if (virual_start != linker_start)
+    if (virtual_start != linker_start)
     {
-        printf("Crashing: KERNEL_START: %llx VIRTUAL_ADDRESS: %p \n", linker_start, virual_start);
-        panic("init_paging: kernel virtual address does not match KERNEL_START linker symbol \n");
+        printf("Crashing: KERNEL_START: %llx VIRT_ADDR: %p\n", linker_start, virtual_start);
+        panic("init_paging: kernel virtual address does not match KERNEL_START linker symbol\n");
     }
 }
 
@@ -106,14 +106,14 @@ void map_memory(void *virtual_memory, void *physical_memory)
 {
     if ((uint64_t)virtual_memory & 0xfff)
     {
-        printf("crashing: virtual_memory %p\n", virtual_memory);
-        panic("map_memory: virtual memory unaligend\n");
+        printf("Crashing: virtual memory: %p\n", virtual_memory);
+        panic("map_memory: virtual memory unaligned\n");
     }
 
     if ((uint64_t)physical_memory & 0xfff)
     {
-        printf("crashing: physical_memory %p\n", physical_memory);
-        panic("map_memory: physical unaligend\n");
+        printf("Crashing: physical memory: %p\n", physical_memory);
+        panic("map_memory: physical memory unaligned\n");
     }
 
     struct page_map_index map;
@@ -152,7 +152,7 @@ void map_memory(void *virtual_memory, void *physical_memory)
         pd = (struct page_directory *)((uint64_t)pde.page_ppn << 12);
     }
 
-    pde = pdp->entries[map.PT_i];
+    pde = pd->entries[map.PT_i];
     struct page_table *pt;
     if (!pde.present)
     {
@@ -192,8 +192,7 @@ uint64_t virtual_to_physical(void *virtual_memory)
     struct page_table *pt = (struct page_table *)((uint64_t)pde.page_ppn << 12);
     struct page_table_entry pte = pt->entries[map.P_i];
 
-    uint64_t physical = (((uint64_t)pte.page_ppn << 12) | ((uint64_t)virtual_memory & 0xfff));
-
+    uint64_t physical = ((uint64_t)pte.page_ppn << 12) | ((uint64_t)virtual_memory & 0xfff);
     return physical;
 }
 void *request_page_identity()
@@ -208,9 +207,9 @@ void mprotect(void *address, uint64_t size, uint8_t permissions)
     uint64_t end = start + size;
 
     start = start & ~0xfff;
-    end = (end + 0xff) & ~0xfff;
+    end = (end + 0xfff) & ~0xfff;
 
-    for (uint64_t i = 0; i < end; i += 0x1000)
+    for (uint64_t i = start; i < end; i += 0x1000)
     {
         set_page_perms((void *)i, permissions);
     }

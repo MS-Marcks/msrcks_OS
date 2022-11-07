@@ -15,6 +15,7 @@
 - [x] Memoria física
 - [x] Asignador de marcos de página
 - [x] Interrupciones (IDT)
+- [x] MEMORIA VIRTUAL
 
 ## **sub modulos**
 - ### OVMFbin
