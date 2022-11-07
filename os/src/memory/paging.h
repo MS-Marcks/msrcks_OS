@@ -6,16 +6,16 @@
 #define PAGE_WRITE_BIT 0x1
 #define PAGE_USER_BIT 0x2
 #define PAGE_NX_BIT 0x3
-#define PAGE_CHACHE_DISABLE 0x8
+#define PAGE_CACHE_DISABLE 0x8
 
-#define PAGE_ALLOW_WRITE(x) ((page_set(x), PAGE_WRITE_BIT))
-#define PAGE_RESTRICT_WRITE(x) ((page_clear(x), PAGE_WRITE_BIT))
-#define PAGE_ALLOW_USER(x) ((page_set(x), PAGE_USER_BIT))
-#define PAGE_RESTRICT_USER(x) ((page_clear(x), PAGE_USER_BIT))
-#define PAGE_ALLOW_NX(x) ((page_set(x), PAGE_NX_BIT))
-#define PAGE_RESTRICT_NX(x) (page_clear(x),PAGE_NX_BIT))
-#define PAGE_DISABLE_CACHE(x) ((page_set(x), PAGE_CHACHE_DISABLE))
-#define PAGE_ENABLE_CACHE(x) ((page_clear(x), PAGE_CHACHE_DISABLE))
+#define PAGE_ALLOW_WRITE(x) ((page_set((x), PAGE_WRITE_BIT)))
+#define PAGE_RESTRICT_WRITE(x) ((page_clear((x), PAGE_WRITE_BIT)))
+#define PAGE_ALLOW_USER(x) ((page_set((x), PAGE_USER_BIT)))
+#define PAGE_RESTRICT_USER(x) ((page_clear((x), PAGE_USER_BIT)))
+#define PAGE_ALLOW_NX(x) ((page_set((x), PAGE_NX_BIT)))
+#define PAGE_RESTRICT_NX(x) ((page_clear((x), PAGE_NX_BIT)))
+#define PAGE_DISABLE_CACHE(x) ((page_set((x), PAGE_CACHE_DISABLE)))
+#define PAGE_ENABLE_CACHE(x) ((page_clear((x), PAGE_CACHE_DISABLE)))
 
 struct page_directory_entry
 {
@@ -31,7 +31,7 @@ struct page_directory_entry
     uint64_t page_ppn : 28;
     uint64_t reserved_1 : 12;
     uint64_t ignored_1 : 11;
-    uint64_t exectuion_disabled : 1;
+    uint64_t execution_disabled : 1;
 } __attribute__((packed));
 
 struct page_table_entry
@@ -49,7 +49,7 @@ struct page_table_entry
     uint64_t page_ppn : 28;
     uint64_t reserved_1 : 12;
     uint64_t ignored_1 : 11;
-    uint64_t exectuion_disabled : 1;
+    uint64_t execution_disabled : 1;
 } __attribute__((packed));
 
 struct page_directory

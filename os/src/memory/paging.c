@@ -21,7 +21,7 @@ void init_paging()
 
     if (virual_start != linker_start)
     {
-        printf("Crashing: KERNEL_START: %11x VIRTUAL_ADDRESS: %p \n", linker_start, virual_start);
+        printf("Crashing: KERNEL_START: %llx VIRTUAL_ADDRESS: %p \n", linker_start, virual_start);
         panic("init_paging: kernel virtual address does not match KERNEL_START linker symbol \n");
     }
 }
@@ -46,8 +46,8 @@ void set_page_perms(void *address, uint8_t permissions)
     struct page_table_entry *pte = &pt->entries[map.P_i];
 
     pte->writeable = (permissions & 1);
-    pte->user_access = ((permissions & 1) >> 1);
-    pte->exectuion_disabled = ((permissions & 4) >> 2);
+    pte->user_access = ((permissions & 2) >> 1);
+    pte->execution_disabled = ((permissions & 4) >> 2);
     pte->cache_disabled = ((permissions & 8) >> 3);
 }
 
@@ -72,7 +72,7 @@ uint8_t get_page_perms(void *address)
 
     uint8_t result = pte.writeable;
     result |= (pte.user_access << 1);
-    result |= (pte.exectuion_disabled << 2);
+    result |= (pte.execution_disabled << 2);
     result |= (pte.cache_disabled << 3);
 
     return result;
