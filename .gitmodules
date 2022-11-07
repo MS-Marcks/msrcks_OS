@@ -4,3 +4,6 @@
 [submodule "os/limine"]
 	path = os/limine
 	url = https://github.com/limine-bootloader/limine
+[submodule "os/src/print/printf"]
+	path = os/os/src/print/printf
+	url = https://github.com/mpaland/printf
