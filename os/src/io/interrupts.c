@@ -47,10 +47,10 @@ void init_interrupts()
 
     for (int i = 0; i < 256; i++)
     {
-        //set_idt_gate((uint64_t)GenericException_Handler, i, IDT_TA_INTERRUPTGATE, 0X28);
+        set_idt_gate((uint64_t)GenericException_Handler, i, IDT_TA_INTERRUPTGATE, 0X28);
     }
 
-    //set_idt_gate((uint64_t)PageFault_Handler, 0x0E, IDT_TA_INTERRUPTGATE, 0X28);
+    set_idt_gate((uint64_t)PageFault_Handler, 0x0E, IDT_TA_INTERRUPTGATE, 0X28);
     set_idt_gate((uint64_t)DoubleFault_Handler, 0x08, IDT_TA_INTERRUPTGATE, 0X28);
 
     __asm__ volatile("lidt %0"
