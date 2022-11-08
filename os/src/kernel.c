@@ -33,19 +33,19 @@ void _start()
     mprotect((void *)ptr2, 0x1000, 0x0);
 
     printf("%llx\n", *ptr1);
-    memset((void *)ptr2, 0x6, 0x1000);
+    memset((void *)ptr1, 0x6, 0x1000);
     printf("%llx\n", *ptr1);
 
     // uint64_t *badptr = (uint64_t *)0xffffffffdeadb000;
     //*badptr = 0xdeadbeef;
 
-    /*void *page1 = request_page();
+    void *page1 = request_page();
     printf("Page 1: %p\n", page1);
     void *page2 = request_page();
     printf("Page 2: %p\n", page2);
     free_page(page2);
     void *page3 = request_page();
-    printf("Page 3: %p\n", page3);*/
+    printf("Page 3: %p\n", page3);
 
     printf("Kernel looping\n");
     hlt();

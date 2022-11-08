@@ -17,7 +17,7 @@ ASMC := nasm
 
 # This are specific to my setup, please modify them!!!!
 ########################################################################
-QEMU := "/home/ms-marcks/repo/qemu/build/qemu-system-x86_64"
+QEMU := "qemu-system-x86_64"
 GDB := "/usr/bin/gdb"
 CMDNEWSCREEN := cmd.exe /c start cmd /c wsl -e
 MNTDIR := /mnt/bloodmoon
