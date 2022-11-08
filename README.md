@@ -15,7 +15,7 @@
 - [x] Memoria física
 - [x] Asignador de marcos de página
 - [x] Interrupciones (IDT)
-- [x] MEMORIA VIRTUAL
+- [x] Memoria virtual
 
 ## **sub modulos**
 - ### OVMFbin
@@ -43,5 +43,5 @@
 2. ejecutar `make setup`
 3. ejecutar `make all`
 
-## **Visor de VNC**
-1. acceder al siguiente enlace para instalar el visor VNC: **[Visor TigerVNC](https://tigervnc.org/)**
+## **instalar qemu**
+1. acceder al siguiente enlace para instalar qemu: **[qemu](https://www.linuxtechi.com/how-to-install-kvm-on-ubuntu-22-04/)**
