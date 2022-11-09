@@ -27,8 +27,8 @@ WSLHOSTIP := $(hostname -i)
 
 KERNEL_ENTRY := _start
 
-QFLAGS ?= -cpu qemu64 -machine q35 -m 512 -boot d -cdrom 
-QFLAGSEXP ?= -cpu qemu64 -machine q35 -m 512 -boot d -d cpu_reset -drive if=pflash,format=raw,unit=0,file=./OVMFbin/OVMF_CODE-pure-efi.fd,readonly=on -drive if=pflash,format=raw,unit=1,file=./OVMFbin/OVMF_VARS-pure-efi.fd -net none -drive file=
+QFLAGS ?= -cpu qemu64 -machine q35 -m 1024 -boot d -cdrom 
+QFLAGSEXP ?= -cpu qemu64 -machine q35 -m 1024 -boot d -d cpu_reset -drive if=pflash,format=raw,unit=0,file=./OVMFbin/OVMF_CODE-pure-efi.fd,readonly=on -drive if=pflash,format=raw,unit=1,file=./OVMFbin/OVMF_VARS-pure-efi.fd -net none -drive file=
 
 CFLAGS ?= -O2 -g -Wall -Wextra -Wpedantic -pipe -std=c11
 NASMFLAGS ?= -F dwarf -g
