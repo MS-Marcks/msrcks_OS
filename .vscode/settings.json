@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "bootservices.h": "c"
+        "io.h": "c",
+        "paging.h": "c",
+        "stdint.h": "c"
     }
 }

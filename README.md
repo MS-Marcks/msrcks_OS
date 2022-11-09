@@ -16,6 +16,7 @@
 - [x] Asignador de marcos de página
 - [x] Interrupciones (IDT)
 - [x] Memoria virtual
+- [x] RTclock
 
 ## **sub modulos**
 - ### OVMFbin

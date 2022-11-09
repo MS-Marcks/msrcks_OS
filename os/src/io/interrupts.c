@@ -37,6 +37,7 @@ void set_idt_gate(uint64_t handler, uint8_t entry_offset, uint8_t type_attr, uin
     interrupt->type_attributes = type_attr;
     interrupt->selector = selector;
 }
+
 void init_interrupts()
 {
     __asm__("cli");
