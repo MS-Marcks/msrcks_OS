@@ -137,9 +137,9 @@ void init_acpi()
         panic("RSDP REVISION NOT SUPPORTED");
     }
 
-    strncpy(signature, mcfg_header->header.signature, 8);
-    strncpy(oemid, mcfg_header->header.oem_id, 6);
+    strncpy(signature, mcfg_header->header.signature, 4);
     strncpy(oemtableid, mcfg_header->header.oem_table_id, 8);
+    strncpy(oemid, mcfg_header->header.oem_id, 6);
 
     printf("MCFG at 0x%11x, SIG: %s LEN: 0x%llx rev %d, check: %d, OEM: %d, OTI: %s, OR:%D CID:%d CREV:%d \n",
            mcfg_header,
