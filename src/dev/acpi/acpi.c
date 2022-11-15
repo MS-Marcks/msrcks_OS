@@ -10,7 +10,7 @@ uint8_t acpi_sdt_checksum(struct acpi_sdt_header *table_header)
 
     for (uint32_t i = 0; i < table_header->length; i++)
     {
-        sum = ((uint8_t *)table_header)[i];
+        sum += ((uint8_t *)table_header)[i];
     }
     return (sum == 0);
 }
@@ -57,7 +57,7 @@ struct acpi_sdt_header *find_xsdt(struct xsdt *xsdt, char *signature, uint64_t s
 
 void *init_acpi_vz(void *rsdp_address)
 {
-    char signature[8];
+    char signature[9];
     char oemid[7];
 
     printf("RSDP Revision 0 \n");
@@ -86,7 +86,7 @@ void *init_acpi_vz(void *rsdp_address)
 
 void *init_acpi_vt(void *rsdp_address)
 {
-    char signature[8];
+    char signature[9];
     char oemid[7];
 
     printf("RSDP Revision 2 \n");
