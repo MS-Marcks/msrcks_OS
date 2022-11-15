@@ -2,10 +2,12 @@
 #include "bootloader/bootservices.h"
 #include "util/string.h"
 #include "memory/memory.h"
-#include <stdint.h>
 #include "io/interrupts.h"
 #include "memory/paging.h"
 #include "drivers/rtclock/rtclock.h"
+#include "dev/acpi/acpi.h"
+
+#include <stdint.h>
 
 void hlt()
 {
@@ -49,6 +51,8 @@ void _start()
     printf("Page 3: %p\n", page3);
 
     init_rtclock();
+
+    init_acpi();
 
     printf("Kernel looping\n");
     hlt();
