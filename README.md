@@ -17,6 +17,7 @@
 - [x] Interrupciones (IDT)
 - [x] Memoria virtual
 - [x] RTclock
+- [x] ACPI
 
 ## **sub modulos**
 - ### OVMFbin
