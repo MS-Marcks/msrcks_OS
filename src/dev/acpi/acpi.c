@@ -92,7 +92,7 @@ void *init_acpi_vt(void *rsdp_address)
     printf("RSDP Revision 2 \n");
 
     struct rsdp2_descriptor *rsdp = (struct rsdp2_descriptor *)rsdp_address;
-    if (memcmp(rsdp->first_part.signature, "RSD PTR", 8))
+    if (memcmp(rsdp->first_part.signature, "RSD PTR ", 8))
     {
         panic("RSDP SIGNATURE MISMATCH");
     }
