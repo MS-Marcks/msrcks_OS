@@ -63,7 +63,7 @@ void *init_acpi_vz(void *rsdp_address)
     printf("RSDP Revision 0 \n");
 
     struct rsdp_descriptor *rsdp = (struct rsdp_descriptor *)rsdp_address;
-    if (memcmp(rsdp->signature, "RSD PTR", 8))
+    if (memcmp(rsdp->signature, "RSD PTR ", 8))
     {
         panic("RSDP SIGNATURE MISMATCH");
     }
@@ -92,17 +92,17 @@ void *init_acpi_vt(void *rsdp_address)
     printf("RSDP Revision 2 \n");
 
     struct rsdp2_descriptor *rsdp = (struct rsdp2_descriptor *)rsdp_address;
-    if (memcmp(rsdp->frist_part.signature, "RSD PTR", 8))
+    if (memcmp(rsdp->first_part.signature, "RSD PTR", 8))
     {
         panic("RSDP SIGNATURE MISMATCH");
     }
 
-    strncpy(oemid, rsdp->frist_part.oem_id, 6);
-    strncpy(signature, rsdp->frist_part.signature, 8);
+    strncpy(oemid, rsdp->first_part.oem_id, 6);
+    strncpy(signature, rsdp->first_part.signature, 8);
 
     printf("RSDP at: 0x%llx Sig: %s Check: %d OEM: %s rev: %d RSDT Address: 0x%llx len:0x%llx XSDT ADDRESS: 0x%llx ExtCheck: %d Res: %s \n",
-           rsdp, signature, rsdp->frist_part.checksum, oemid, rsdp->frist_part.revision, rsdp->frist_part.rsdt_address,
-           rsdp->length, rsdp->xsdt_address, rsdp->extended_cheksum, rsdp->reserved);
+           rsdp, signature, rsdp->first_part.checksum, oemid, rsdp->first_part.revision, rsdp->first_part.rsdt_address,
+           rsdp->length, rsdp->xsdt_address, rsdp->extended_checksum, rsdp->reserved);
 
     struct xsdt *xsdt = (struct xsdt *)(uint64_t)(rsdp->xsdt_address);
     struct acpi_sdt_header *mcfg = find_xsdt(xsdt, "MCFG", 4);
@@ -123,7 +123,7 @@ void init_acpi()
     void *rsdp_address = (void *)get_rsdp_address(); // bootloader
     struct rsdp_descriptor *prev_rsdp = (struct rsdp_descriptor *)rsdp_address;
     struct mcfg_header *mcfg_header = 0x0;
-    
+
     if (prev_rsdp->revision == 0)
     {
         mcfg_header = (struct mcfg_header *)init_acpi_vz(rsdp_address);
