@@ -1,5 +1,5 @@
-#ifndef _DEVICES_H
-#define _DEVICES_H
+#ifndef _DEVICE_H
+#define _DEVICE_H
 #include <stdint.h>
 #include "pci/pci.h"
 #include "acpi/acpi.h"
@@ -10,8 +10,8 @@
 
 struct file_operations
 {
-    uint64_t (*read)(uint64_t, uint64_t, uint64_t, uint8_t *);
-    uint64_t (*write)(uint64_t, uint64_t, uint64_t, uint8_t *);
+    uint64_t (*read)(uint8_t, uint64_t, uint64_t, uint8_t *);
+    uint64_t (*write)(uint8_t, uint64_t, uint64_t, uint8_t *);
     uint64_t (*ioctl)(uint8_t, uint32_t, void *);
 };
 

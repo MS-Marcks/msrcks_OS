@@ -273,7 +273,7 @@ const char *get_prog_interface(uint8_t class_code, uint8_t subclass_code, uint8_
     return itoa(prog_interface, 16);
 }
 
-void insert_devices(uint8_t major, struct pci_device_header *pci, const char *prefix, uint8_t id)
+void insert_device(uint8_t major, struct pci_device_header *pci, const char *prefix, uint8_t id)
 {
     char name[32];
     memset(name, 0, 32);
@@ -345,7 +345,7 @@ void register_char(uint8_t major, const char *name, struct file_operations *fops
         return;
     }
 
-    strncpy(char_device_drivers[major].name, major, strlen(name));
+    strncpy(char_device_drivers[major].name, name, strlen(name));
     char_device_drivers[major].registered = 1;
     char_device_drivers[major].fops = fops;
 
@@ -360,7 +360,7 @@ void register_block(uint8_t major, const char *name, struct file_operations *fop
         return;
     }
 
-    strncpy(block_device_drivers[major].name, major, strlen(name));
+    strncpy(block_device_drivers[major].name, name, strlen(name));
     block_device_drivers[major].registered = 1;
     block_device_drivers[major].fops = fops;
 
