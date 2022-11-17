@@ -6,7 +6,7 @@
 #include "memory/paging.h"
 #include "drivers/rtclock/rtclock.h"
 #include "dev/acpi/acpi.h"
-
+#include "dev/device.h"
 #include <stdint.h>
 
 void hlt()
@@ -52,7 +52,9 @@ void _start()
 
     init_rtclock();
 
-    init_acpi();
+    //init_acpi();
+    init_devices();
+    device_list();
 
     printf("Kernel looping\n");
     hlt();
