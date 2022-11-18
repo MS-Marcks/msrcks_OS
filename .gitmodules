@@ -1,8 +1,8 @@
 [submodule "limine"]
-	path = os/limine
+	path = limine
 	url = https://github.com/limine-bootloader/limine
 [submodule "src/print/printf"]
-	path = os/os/src/print/printf
+	path = src/print/printf
 	url = https://github.com/mpaland/printf
 [submodule "OVMFbin"]
 	path = OVMFbin

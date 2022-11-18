@@ -23,17 +23,17 @@
 - ### OVMFbin
     - ejecutar el comando: 
     ```bash
-    git submodule add https://github.com/Absurdponcho/OVMFbin os/OVMFbin
+    git submodule add --force https://github.com/Absurdponcho/OVMFbin
     ``` 
 - ### limine
     - ejecutar el comando: 
     ```bash
-    git submodule add https://github.com/limine-bootloader/limine os/limine
+    git submodule add --force https://github.com/limine-bootloader/limine
     ``` 
 - ### printf
     - ejecutar el comando: 
     ```bash
-    git submodule add https://github.com/mpaland/printf os/src/print/printf
+    git submodule add --force https://github.com/mpaland/printf src/print/printf
     ``` 
 
 ## **como habilitar el entorno de desallorro**

@@ -75,7 +75,7 @@ void enumerate_pci(struct mcfg_header *mcfg)
     for (uint64_t i = 0; i < entries; i++)
     {
         struct device_config *new_device_config = (struct device_config *)((uint64_t)mcfg + sizeof(struct mcfg_header) + (sizeof(struct device_config) * i));
-        for (uint64_t bus = new_device_config->start_bus; i < new_device_config->end_bus; i++)
+        for (uint64_t bus = new_device_config->start_bus; bus < new_device_config->end_bus; bus++)
         {
             enumerate_bus(new_device_config->base_address, bus);
         }

@@ -11,24 +11,24 @@ override GDBCFG := debug.gdb
 
 CC := /usr/bin/cc
 LD := /usr/bin/ld
-LMN := limine/limine-deploy
+LMN := limine/limine-deploy.exe
 BOOTEFI := ./limine/BOOTX64.EFI
 ASMC := nasm
 
 # This are specific to my setup, please modify them!!!!
 ########################################################################
-QEMU := "qemu-system-x86_64"
-GDB := "/usr/bin/gdb"
+QEMU := "/mnt/c/Program Files/qemu/qemu-system-x86_64.exe"
+GDB := "/mnt/c/Users/85562/crossgdb/gdb-12.1/gdb/gdb"
 CMDNEWSCREEN := cmd.exe /c start cmd /c wsl -e
 MNTDIR := /mnt/bloodmoon
 
-WSLHOSTIP := $(hostname -i)
+WSLHOSTIP := "192.168.1.7"
 ########################################################################
 
 KERNEL_ENTRY := _start
 
-QFLAGS ?= -cpu qemu64 -machine q35 -m 1024 -boot d -cdrom 
-QFLAGSEXP ?= -cpu qemu64 -machine q35 -m 1024 -boot d -d cpu_reset -drive if=pflash,format=raw,unit=0,file=./OVMFbin/OVMF_CODE-pure-efi.fd,readonly=on -drive if=pflash,format=raw,unit=1,file=./OVMFbin/OVMF_VARS-pure-efi.fd -net none -drive file=
+QFLAGS ?= -cpu qemu64 -machine q35 -m 512 -boot d -cdrom 
+QFLAGSEXP ?= -cpu qemu64 -machine q35 -m 512 -boot d -d cpu_reset -drive if=pflash,format=raw,unit=0,file=./OVMFbin/OVMF_CODE-pure-efi.fd,readonly=on -drive if=pflash,format=raw,unit=1,file=./OVMFbin/OVMF_VARS-pure-efi.fd -net none -drive file=
 
 CFLAGS ?= -O2 -g -Wall -Wextra -Wpedantic -pipe -std=c11
 NASMFLAGS ?= -F dwarf -g
