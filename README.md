@@ -18,6 +18,7 @@
 - [x] Memoria virtual
 - [x] RTclock
 - [x] ACPI
+- [x] PCI
 
 ## **sub modulos**
 - ### OVMFbin
